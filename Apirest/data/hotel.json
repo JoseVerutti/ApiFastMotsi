@@ -1,0 +1,763 @@
+[
+	{
+		"id": 63288,
+		"agentId": 38076,
+		"title": "Ecotour las perlas",
+		"slug": "amet-rem-tempora",
+		"content": "Libero omnis aut odio quia est. Reprehenderit sed quam ut est eum ullam facere et. Dolorem et voluptatem molestiae vero et. Minus vero sed et quia. Doloribus quisquam cum corporis molestiae.",
+		"status": "publish",
+		"price": "223.00",
+		"isNegotiable": false,
+		"propertyType": "Villa",
+		"condition": "Poor",
+		"rating": 3,
+		"ratingCount": 1,
+		"contactNumber": "1-114-147-7099",
+		"amenities": [
+			{
+				"id": 42453,
+				"guestRoom": 8
+			},
+			{
+				"id": 30289,
+				"bedRoom": 6
+			},
+			{
+				"id": 5821,
+				"wifiAvailability": true
+			},
+			{
+				"id": 22411,
+				"parkingAvailability": true
+			},
+			{
+				"id": 95762,
+				"poolAvailability": true
+			},
+			{
+				"id": 27621,
+				"airCondition": false
+			},
+			{
+				"id": 96437,
+				"extraBedFacility": false
+			}
+		],
+		"image": {
+			"id": 90096,
+			"url": "../images/banner/1.jpg",
+			"thumb_url": "../images/banner/1.jpg"
+
+		},
+		"location": {
+			"id": 67404,
+			"lat": 40.706877,
+			"lng": -74.011265,
+			"formattedAddress": "52623 Hector Alberto",
+			"zipcode": "68225-1064",
+			"city": "Nestorview",
+			"state_long": "Washington",
+			"state_short": "WY",
+			"country_long": "Tanzania",
+			"country_short": "VN"
+		},
+		"gallery": [
+			{
+				"id": 11287,
+				"url": "../images/banner/1.jpg"
+			},
+			{
+				"id": 51759,
+				"url": "../images/banner/1.jpg"
+			},
+			{
+				"id": 1888,
+				"url": "../images/banner/1.jpg"
+			}
+		]
+	},
+	{
+		"id": 10656,
+		"agentId": 22344,
+		"title": "Paraiso Mil Aves",
+		"slug": "dolore-rerum-voluptates",
+		"content": "Sint aliquam voluptates nam. Exercitationem at ipsam. Ducimus natus ipsa nulla dolores aliquid. Occaecati minus dolores suscipit iste voluptatibus numquam qui tempore.",
+		"status": "publish",
+		"price": "768.00",
+		"isNegotiable": true,
+		"propertyType": "Hotel",
+		"condition": "Poor",
+		"rating": 2,
+		"ratingCount": 1,
+		"contactNumber": "688.399.4392",
+		"amenities": [
+			{
+				"id": 23592,
+				"guestRoom": 2
+			},
+			{
+				"id": 7393,
+				"bedRoom": 8
+			},
+			{
+				"id": 43675,
+				"wifiAvailability": false
+			},
+			{
+				"id": 19250,
+				"parkingAvailability": true
+			},
+			{
+				"id": 4504,
+				"poolAvailability": true
+			},
+			{
+				"id": 25986,
+				"airCondition": true
+			},
+			{
+				"id": 75036,
+				"extraBedFacility": false
+			}
+		],
+		"image": {
+			"id": 25738,
+			"url": "../images/Aves/Ave 1.jpg",
+			"thumb_url": "../images/Aves/Ave 1.jpg"
+		},
+		"location": {
+			"id": 57557,
+			"lat": 40.7168,
+			"lng": -74.0465,
+			"formattedAddress": "28740 Erica Lorena",
+			"zipcode": "26632",
+			"city": "East Lonshire",
+			"state_long": "Michigan",
+			"state_short": "ME",
+			"country_long": "Saint Helena",
+			"country_short": "TK"
+		},
+		"gallery": [
+			{
+				"id": 64454,
+				"url": "../images/Aves/Ave 2.jpg"
+			},
+			{
+				"id": 21253,
+				"url": "../images/Aves/Ave 3.jpg"
+			},
+			{
+				"id": 46809,
+				"url": "../images/Aves/Ave 4.jpg"
+			}
+		]
+	},
+	{
+		"id": 34842,
+		"agentId": 66343,
+		"title": "La cascada del ruiseñor",
+		"slug": "nulla-ullam-officia",
+		"content": "Totam voluptatum iusto autem est sapiente eius. Autem qui incidunt beatae harum iusto dolorem numquam voluptates qui. Repellendus aut deserunt ipsum ad excepturi velit tempore ut reiciendis. Ducimus officia animi voluptatem sequi. Ut enim sequi delectus adipisci nemo praesentium illo. Rerum ut ab eum.",
+		"status": "draft",
+		"price": "191.00",
+		"isNegotiable": false,
+		"propertyType": "Villa",
+		"condition": "Average",
+		"rating": 4.5,
+		"ratingCount": 14,
+		"contactNumber": "890-827-6932",
+		"amenities": [
+			{
+				"id": 35106,
+				"guestRoom": 2
+			},
+			{
+				"id": 23084,
+				"bedRoom": 2
+			},
+			{
+				"id": 62049,
+				"wifiAvailability": false
+			},
+			{
+				"id": 69839,
+				"parkingAvailability": false
+			},
+			{
+				"id": 51897,
+				"poolAvailability": false
+			},
+			{
+				"id": 3389,
+				"airCondition": false
+			},
+			{
+				"id": 90560,
+				"extraBedFacility": true
+			}
+		],
+		"image": {
+			"id": 42681,
+			"url": "../images/Aves/Ave 1.jpg",
+			"thumb_url": "../images/Aves/Ave 1.jpg"
+		},
+		"location": {
+			"id": 45160,
+			"lat": 40.7405,
+			"lng": -73.9878,
+			"formattedAddress": "453 Bertha lucía",
+			"zipcode": "78170",
+			"city": "Lorenhaven",
+			"state_long": "Oregon",
+			"state_short": "AK",
+			"country_long": "Djibouti",
+			"country_short": "SK"
+		},
+		"gallery": [
+			{
+				"id": 37686,
+				"url": "../images/Aves/Ave 3.jpg"
+			},
+			{
+				"id": 15249,
+				"url": "../images/Aves/Ave 4.jpg"
+			},
+			{
+				"id": 23724,
+				"url": "../images/Aves/Ave 5.jpg"
+			}
+		]
+	},
+	{
+		"id": 13858,
+		"agentId": 62059,
+		"title": "Laguna de los condores",
+		"slug": "minus-dolores-quia",
+		"content": "Voluptates commodi nihil voluptatem ea. Id aut ea aliquam perspiciatis quo voluptatum sapiente quas. Esse nobis dolores.",
+		"status": "publish",
+		"price": "662.00",
+		"isNegotiable": true,
+		"propertyType": "Hotel",
+		"condition": "Terrible",
+		"rating": 4.76,
+		"ratingCount": 12,
+		"contactNumber": "(301) 450-0248 x4505",
+		"amenities": [
+			{
+				"id": 43258,
+				"guestRoom": 3
+			},
+			{
+				"id": 44033,
+				"bedRoom": 4
+			},
+			{
+				"id": 33164,
+				"wifiAvailability": false
+			},
+			{
+				"id": 9369,
+				"parkingAvailability": false
+			},
+			{
+				"id": 73172,
+				"poolAvailability": false
+			},
+			{
+				"id": 60056,
+				"airCondition": true
+			},
+			{
+				"id": 79307,
+				"extraBedFacility": true
+			}
+		],
+		"image": {
+			"id": 87047,
+			"url": "../images/Aves/Ave 1.jpg",
+			"thumb_url": "../images/Aves/Ave 1.jpg"
+		},
+		"location": {
+			"id": 27125,
+			"lat": 40.7673,
+			"lng": -74.0462,
+			"formattedAddress": "8196 Gianpier Verutti",
+			"zipcode": "43464",
+			"city": "Braulioburgh",
+			"state_long": "California",
+			"state_short": "MT",
+			"country_long": "Austria",
+			"country_short": "CL"
+		},
+		"gallery": [
+			{
+				"id": 62073,
+				"url": "../images/Aves/Ave 4.jpg"
+			},
+			{
+				"id": 94501,
+				"url": "../images/Aves/Ave 5.jpg"
+			},
+			{
+				"id": 11548,
+				"url": "../images/Aves/Ave 6.jpg"
+			}
+		]
+	},
+	{
+		"id": 75801,
+		"agentId": 28419,
+		"title": "Pico de Loro",
+		"slug": "repellat-excepturi-nobis",
+		"content": "Quam cum nihil a quod nam assumenda repellat qui. Suscipit iste facilis aut dolore voluptatum iure. Neque eius numquam rerum occaecati. Totam ratione animi voluptas ex. Laborum modi eius neque inventore rerum.",
+		"status": "draft",
+		"price": "888.00",
+		"isNegotiable": false,
+		"propertyType": "Hotel",
+		"condition": "Poor",
+		"rating": 2.8,
+		"ratingCount": 2,
+		"contactNumber": "055-387-6388",
+		"amenities": [
+			{
+				"id": 91599,
+				"guestRoom": 8
+			},
+			{
+				"id": 54794,
+				"bedRoom": 3
+			},
+			{
+				"id": 23246,
+				"wifiAvailability": true
+			},
+			{
+				"id": 81884,
+				"parkingAvailability": true
+			},
+			{
+				"id": 10766,
+				"poolAvailability": true
+			},
+			{
+				"id": 84257,
+				"airCondition": false
+			},
+			{
+				"id": 83346,
+				"extraBedFacility": false
+			}
+		],
+		"image": {
+			"id": 32194,
+			"url": "../images/Aves/Ave 1.jpg",
+			"thumb_url": "../images/Aves/Ave 1.jpg"
+		},
+		"location": {
+			"id": 33715,
+			"lat": 40.9003,
+			"lng": -74.5117,
+			"formattedAddress": "80766 Valentina Ortega",
+			"zipcode": "85895-0513",
+			"city": "East Jamie",
+			"state_long": "Oklahoma",
+			"state_short": "OR",
+			"country_long": "Palestinian Territory",
+			"country_short": "ZM"
+		},
+		"gallery": [
+			{
+				"id": 51437,
+				"url": "../images/Aves/Ave 6.jpg"
+			},
+			{
+				"id": 62903,
+				"url": "../images/Aves/Ave 7.jpg"
+			},
+			{
+				"id": 69198,
+				"url": "../images/Aves/Ave 8.jpg"
+			}
+		]
+	},
+	{
+		"id": 63811,
+		"agentId": 22353,
+		"title": "Salto de las aves",
+		"slug": "earum-provident-adipisci",
+		"content": "Dolores tempora distinctio. Excepturi reprehenderit blanditiis quibusdam reprehenderit non quo atque sunt. Sint sed sit ut et doloremque amet reprehenderit.",
+		"status": "draft",
+		"price": "316.00",
+		"isNegotiable": true,
+		"propertyType": "Hotel",
+		"condition": "Good",
+		"rating": 2.5,
+		"ratingCount": 12,
+		"contactNumber": "(352) 594-5474 x93019",
+		"amenities": [
+			{
+				"id": 17643,
+				"guestRoom": 7
+			},
+			{
+				"id": 23712,
+				"bedRoom": 1
+			},
+			{
+				"id": 47458,
+				"wifiAvailability": false
+			},
+			{
+				"id": 82666,
+				"parkingAvailability": true
+			},
+			{
+				"id": 46037,
+				"poolAvailability": true
+			},
+			{
+				"id": 20784,
+				"airCondition": false
+			},
+			{
+				"id": 63472,
+				"extraBedFacility": true
+			}
+		],
+		"image": {
+			"id": 52861,
+			"url": "../images/Aves/Ave 1.jpg",
+			"thumb_url": "../images/Aves/Ave 1.jpg"
+		},
+		"location": {
+			"id": 23076,
+			"lat": 40.8214,
+			"lng": -75.2052,
+			"formattedAddress": "8424 Daniela Ortega",
+			"zipcode": "63836-1545",
+			"city": "Uptonmouth",
+			"state_long": "Virginia",
+			"state_short": "NJ",
+			"country_long": "Qatar",
+			"country_short": "GT"
+		},
+		"gallery": [
+			{
+				"id": 98348,
+				"url": "../images/Aves/Ave 7.jpg"
+			},
+			{
+				"id": 10832,
+				"url": "../images/Aves/Ave 8.jpg"
+			},
+			{
+				"id": 70635,
+				"url": "../images/Aves/Ave 9.jpg"
+			}
+		]
+	},
+	{
+		"id": 35137,
+		"agentId": 63123,
+		"title": "Rincón dorado",
+		"slug": "numquam-distinctio-eius",
+		"content": "Id ea quasi magnam aspernatur omnis. Inventore possimus aut autem iure ut eum. Quia fuga hic similique voluptas officiis esse. Veritatis voluptatibus qui ut. Voluptatem enim sit assumenda rerum. Ad ut enim necessitatibus totam quia cumque asperiores laborum.",
+		"status": "publish",
+		"price": "245.00",
+		"isNegotiable": false,
+		"propertyType": "Hotel",
+		"condition": "Good",
+		"rating": 3.5,
+		"ratingCount": 11,
+		"contactNumber": "1-619-861-6069 x3877",
+		"amenities": [
+			{
+				"id": 42547,
+				"guestRoom": 7
+			},
+			{
+				"id": 59276,
+				"bedRoom": 4
+			},
+			{
+				"id": 26908,
+				"wifiAvailability": true
+			},
+			{
+				"id": 48314,
+				"parkingAvailability": false
+			},
+			{
+				"id": 15833,
+				"poolAvailability": false
+			},
+			{
+				"id": 12431,
+				"airCondition": false
+			},
+			{
+				"id": 59575,
+				"extraBedFacility": true
+			}
+		],
+		"image": {
+			"id": 91141,
+			"url": "../images/Aves/Ave 1.jpg",
+			"thumb_url": "../images/Aves/Ave 1.jpg"
+		},
+		"location": {
+			"id": 10393,
+			"lat": 40.8453,
+			"lng": -76.0512,
+			"formattedAddress": "43299 Manuel Verutti",
+			"zipcode": "87445",
+			"city": "Loraineberg",
+			"state_long": "Nebraska",
+			"state_short": "NJ",
+			"country_long": "Central African Republic",
+			"country_short": "NG"
+		},
+		"gallery": [
+			{
+				"id": 99115,
+				"url": "../images/Aves/Ave 8.jpg"
+			},
+			{
+				"id": 27188,
+				"url": "../images/Aves/Ave 9.jpg"
+			},
+			{
+				"id": 33855,
+				"url": "../images/Aves/Ave 10.jpg"
+			}
+		]
+	},
+	{
+		"id": 91552,
+		"agentId": 9488,
+		"title": "Avitour los buitres",
+		"slug": "nobis-et-et",
+		"content": "Labore voluptatem laborum quod est. Nihil voluptates et praesentium quis. Culpa est ut voluptatem molestiae sint non veritatis suscipit ab. Quia accusamus laudantium aut eaque minus architecto voluptatem vero maxime. Libero minima aperiam provident rerum autem voluptatem veniam est quos.",
+		"status": "draft",
+		"price": "662.00",
+		"isNegotiable": false,
+		"propertyType": "Villa",
+		"condition": "Average",
+		"rating": 3.9,
+		"ratingCount": 8,
+		"contactNumber": "(484) 092-0621 x11827",
+		"amenities": [
+			{
+				"id": 43134,
+				"guestRoom": 3
+			},
+			{
+				"id": 44490,
+				"bedRoom": 6
+			},
+			{
+				"id": 43432,
+				"wifiAvailability": false
+			},
+			{
+				"id": 60072,
+				"parkingAvailability": false
+			},
+			{
+				"id": 80885,
+				"poolAvailability": true
+			},
+			{
+				"id": 39788,
+				"airCondition": false
+			},
+			{
+				"id": 28924,
+				"extraBedFacility": true
+			}
+		],
+		"image": {
+			"id": 14297,
+			"url": "../images/Aves/Ave 1.jpg",
+			"thumb_url": "../images/Aves/Ave 1.jpg"
+		},
+		"location": {
+			"id": 93702,
+			"lat": 40.4451,
+			"lng": -79.9184,
+			"formattedAddress": "73311 Jose Verutti",
+			"zipcode": "27499-3830",
+			"city": "Vincetown",
+			"state_long": "Maine",
+			"state_short": "PA",
+			"country_long": "Belarus",
+			"country_short": "BQ"
+		},
+		"gallery": [
+			{
+				"id": 35180,
+				"url": "../images/Aves/Ave 9.jpg"
+			},
+			{
+				"id": 27573,
+				"url": "../images/Aves/Ave 10.jpg"
+			},
+			{
+				"id": 68402,
+				"url": "../images/Aves/Ave 1.jpg"
+			}
+		]
+	},
+	{
+		"id": 26601,
+		"agentId": 61604,
+		"title": "Caminata mil plumas",
+		"slug": "eum-voluptas-tempore",
+		"content": "Natus provident voluptatum quibusdam minima non officiis beatae. Nobis est architecto sequi laboriosam id maiores harum et. Quo dolores consequuntur nostrum ullam sapiente asperiores itaque dolores. Et nobis voluptatem dolores corrupti accusantium. Magni voluptas quis inventore.",
+		"status": "draft",
+		"price": "170.00",
+		"isNegotiable": false,
+		"propertyType": "Villa",
+		"condition": "Average",
+		"rating": 4.5,
+		"ratingCount": 5,
+		"contactNumber": "150.663.2821",
+		"amenities": [
+			{
+				"id": 70472,
+				"guestRoom": 6
+			},
+			{
+				"id": 88236,
+				"bedRoom": 6
+			},
+			{
+				"id": 29649,
+				"wifiAvailability": true
+			},
+			{
+				"id": 70319,
+				"parkingAvailability": true
+			},
+			{
+				"id": 78746,
+				"poolAvailability": false
+			},
+			{
+				"id": 78269,
+				"airCondition": true
+			},
+			{
+				"id": 95269,
+				"extraBedFacility": true
+			}
+		],
+		"image": {
+			"id": 22340,
+			"url": "../images/Aves/Ave 1.jpg",
+			"thumb_url": "../images/Aves/Ave 1.jpg"
+		},
+		"location": {
+			"id": 81726,
+			"lat": 44.0543,
+			"lng": -71.393,
+			"formattedAddress": "303 Yesica Milena",
+			"zipcode": "85094-6329",
+			"city": "Lake Taylorstad",
+			"state_long": "West Virginia",
+			"state_short": "IA",
+			"country_long": "Botswana",
+			"country_short": "DO"
+		},
+		"gallery": [
+			{
+				"id": 70509,
+				"url": "../images/Aves/Ave 10.jpg"
+			},
+			{
+				"id": 32412,
+				"url": "../images/Aves/Ave 1.jpg"
+			},
+			{
+				"id": 12967,
+				"url": "../images/Aves/Ave 2.jpg"
+			}
+		]
+	},
+	{
+		"id": 13498,
+		"agentId": 52252,
+		"title": "Laguna vuelo bajo",
+		"slug": "eligendi-ex-ut",
+		"content": "Adipisci illum fugiat. Tempore est fugiat. Facere veritatis assumenda rem dolor.",
+		"status": "publish",
+		"price": "195.00",
+		"isNegotiable": true,
+		"propertyType": "Hotel",
+		"condition": "Excellent",
+		"rating": 5,
+		"ratingCount": 8,
+		"contactNumber": "492.701.7429 x567",
+		"amenities": [
+			{
+				"id": 76686,
+				"guestRoom": 6
+			},
+			{
+				"id": 18771,
+				"bedRoom": 8
+			},
+			{
+				"id": 54155,
+				"wifiAvailability": true
+			},
+			{
+				"id": 22192,
+				"parkingAvailability": true
+			},
+			{
+				"id": 5566,
+				"poolAvailability": false
+			},
+			{
+				"id": 48604,
+				"airCondition": false
+			},
+			{
+				"id": 15424,
+				"extraBedFacility": true
+			}
+		],
+		"image": {
+			"id": 60214,
+			"url": "http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-15.jpg",
+			"thumb_url": "http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-15_thumb.jpg"
+		},
+		"location": {
+			"id": 82805,
+			"lat": 43.0992,
+			"lng": -78.9296,
+			"formattedAddress": "368 Salomé Riascos",
+			"zipcode": "58291-9076",
+			"city": "Kilbackland",
+			"state_long": "Wisconsin",
+			"state_short": "WV",
+			"country_long": "Denmark",
+			"country_short": "GH"
+		},
+		"gallery": [
+			{
+				"id": 7788,
+				"url": "../images/Aves/Ave 2.jpg"
+			},
+			{
+				"id": 21707,
+				"url": "../images/Aves/Ave 3.jpg"
+			},
+			{
+				"id": 7459,
+				"url": "../images/Aves/Ave 4.jpg"
+			}
+		]
+	}	
+]
