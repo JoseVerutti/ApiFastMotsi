@@ -9,20 +9,23 @@ from uuid import uuid4 as uniqueID
 # --------------------------------------- VARIABLES ---------------------------------------
 dict_usuarios= []
 app = FastAPI(title="motsi",
-    description="Api Rest del mvp de Motsi",
+    description="Api Rest del primer mvp de Motsi",
     version="0.5")
 
 
 #-----------------------------Schemas------------------------------------------------------
 
 class Service_provider(BaseModel):
-    id: Optional[str]
-    name: str
+    '''Esquema que gestiona los datos del prestador de servicios '''
+    id: Optional[str] 
+    firstName: str
+    lastName: str
+    email: Text
     username: str
     password: str
-    email: Text
-    cell_number: int
-    sex: str
+    # description:str
+    # cell_number: int
+    # sex: str
     created_at: Optional[str]=datetime.now()
     # profile_pic: { "id": , "url":  }
     # date_of_birth: 
@@ -34,8 +37,10 @@ class Service_provider(BaseModel):
     # country_short: str
 
 class Turist(BaseModel):
+    '''  Esquema que gestiona los datos de los turistas    '''
     id: Optional[str]=None
     name: str
+    description:str
     username: str
     password: str
     email: Text
@@ -44,34 +49,37 @@ class Turist(BaseModel):
     created_at: datetime = datetime.now()
 
 class Location(BaseModel):
-
+    '''     Esquema que gestiona las Ubicaciones de las actividades    '''
     Activity_id:Optional[str]=None
     Country: str
     city: str
-    postalcode: int
+    postalcode: Optional[int]
     is_location_exact: bool
     latitud:float
     longitud:float
-    #altitud: Optional(float)=None
+    altitud: Optional[float]=None
 
 
 
-class Activiti(BaseModel):
+class Activity(BaseModel):
+    '''  Esquema que gestiona las actividad o experiencia turistica   '''
     id: Optional[str]=None
     provider_id: Optional[str]=None
     title: str
+    description:str
     content : str
     status: bool
     price: float
     isNegotiable: bool 
+    contactNumber: int
     # propertyType: 
     # condition: None
     # rating: None
     # ratingCount: None
-    contactNumber: int
     # amenities: None
 
 class Amenities(BaseModel):
+    ''' Esquema que gestiona los implementos "Plus" de las actividades    '''
     Activity_id: Optional[str]=None
     bebederos:bool
     alimentadores:bool
@@ -86,14 +94,17 @@ class Amenities(BaseModel):
     guia_de_avisturismo:bool
 
 class MediaFile_User(BaseModel):
+    ''' Esquema que gestiona las Archivos multimedia de los usuarios   '''
     user_id: Optional[str]=None
     type: str
 
-class MediaFile_Activiti(BaseModel):
+class MediaFile_Activity(BaseModel):
+    '''  Esquema que gestiona los Archivos multimedia de las actividades   '''
     Activity_id: Optional[str]=None
     type:str
 
 class reservations(BaseModel):
+    '''  Esquema que gestiona las reservas de actividades del turista   '''
     turist_id: Optional[str]=None
     Activity_id:Optional[str]=None
     state:str
@@ -134,32 +145,95 @@ async def user():
 
 
 @app.post("/api/activities")
-#'''Ruta para crear una actividad'''
 async def create_activity():
+    '''Ruta para crear una actividad'''
     return("Actividad creada")
 
 @app.get("/api/activities")
-#'''Ruta para mostrar las actividades'''
 async def get_activity_data():
+    '''Ruta para mostrar las actividades'''
     return("Actividad obtenida")
 
 @app.delete("/api/activities")
-#'''Ruta para eliminar una actividad'''
 async def delete_activity_data():
+    '''Ruta para eliminar una actividad'''
     return("Actividad eliminada")
 
 @app.put("/api/activities")
-#'''Ruta para editar una actividad'''
 async def update_activity_data():
+    '''Ruta para editar una actividad'''
     return("Actividad editada exitosamente")
 
     
-#----------------RUTRAS: Usuarios-------------------------------------------------------
+#----------------GIANPIER -------------------------------------------------------
+#----------------GIANPIER -------------------------------------------------------
 
 
-@app.post("/api/user_t/")
-#'''Esta es la ruta para crear usuarios de turista'''
+@app.post("/api/user_POST/")
 async def create_turist(usuario: Turist):
+    '''Esta es la ruta para crear usuarios de turista'''
+    try:
+        usuario.id = str(uniqueID())
+        usuario.created_at = str(datetime.now())
+        dict_usuarios = (usuario.dict())
+        result = insertBD(dict_usuarios, 'usuarios')
+        return(result)
+    except Exception as e:
+        print('-'*40,'\n','ha ocurrido un error:', '\n', e)
+
+class userGet(BaseModel):
+    userName:str
+
+
+@app.get("/api/user_GET/")
+async def create_turist(usuario: userGet):
+    '''Esta es la ruta para obtener usuarios'''
+    try:
+        print('hizo get')
+        response = obtenerBD("usuarios", usuario.userName)
+        return(response)
+
+    except Exception as e:
+        print('-'*40,'\n','ha ocurrido un error:', '\n', e)
+
+
+#----------------RUTAS: Usuarios turista-------------------------------------------------------
+
+@app.get("/api/user_t/{user_id}")
+async def get_turist_data(user_id):
+    '''Esta es la ruta para consultar la lista de usuarios'''
+    user= dict_usuarios.select().where(dict_usuarios.id== user_id).first()
+    if user:
+        print(user)
+    else:
+        print("User not found")
+
+@app.delete("/api/user_t/{user_id}")
+
+async def delete_turist_data(user_id):
+    '''Esta es la ruta para Eliminar un usuario'''
+    try:
+        pass
+    except Exception as e:
+        print('-'*40,'\n','ha ocurrido un error:', '\n', e)
+
+@app.put("/api/user_t/{user_id}")
+
+async def update_turist_data(user_id):
+    '''Esta es la ruta para actualizar la lista de usuarios'''
+    try:
+        pass
+    except Exception as e:
+        print('-'*40,'\n','ha ocurrido un error:', '\n', e)
+
+
+#----------------RUTAS: Usuarios prestador de servicios-------------------------------------------------------
+
+
+@app.post("/api/user_sp/")
+
+async def create_Service_provider(usuario: Service_provider):
+    '''Esta es la ruta para crear usuarios de Service_provider'''
     try:
         usuario.id = str(uniqueID())
         usuario.created_at = str(datetime.now())
@@ -169,19 +243,29 @@ async def create_turist(usuario: Turist):
     except Exception as e:
         print('-'*40,'\n','ha ocurrido un error:', '\n', e)
 
-@app.get("/api/user_t")
-#'''Esta es la ruta para consultar la lista de usuarios'''
-async def get_turist_data(user_id):
-    #user= lista_usuarios.select().where(lista_usuarios.id== user_id).first()
-    user= dict_usuarios.select().where(dict_usuarios.id== user_id).first()
+@app.get("/api/user_sp/{user_id}")
 
+async def get_Service_provider_data(user_id):
+    '''Esta es la ruta para consultar la lista de Service_provider'''
+    user= dict_usuarios.select().where(dict_usuarios.id== user_id).first()
     if user:
         print(user)
     else:
         print("User not found")
 
-@app.get("/api/user_sp")
-#'''Esta es la ruta para consultar los datos de la vista de un service provider'''
-async def get_serviceProvider_data():
-    return("ruta del sp")
+@app.delete("/api/user_sp/{user_id}")
+async def delete_Service_provider_data(user_id):
+    '''Esta es la ruta para eliminar de la lista un Service_provider'''
+    try:
+        pass
+    except Exception as e:
+        print('-'*40,'\n','ha ocurrido un error:', '\n', e)
+
+@app.put("/api/user_sp/{user_id}")
+async def update_Service_provider_data(user_id):
+    '''Esta es la ruta para actualizar los datos de Service_provider'''
+    try:
+        pass
+    except Exception as e:
+        print('-'*40,'\n','ha ocurrido un error:', '\n', e)
 
