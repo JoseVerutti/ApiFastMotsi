@@ -3,10 +3,11 @@ from pydantic import BaseModel
 from typing import Text, Optional
 from datetime import date, datetime
 import json
+from database import *
 from uuid import uuid4 as uniqueID
 
 # --------------------------------------- VARIABLES ---------------------------------------
-lista_usuarios= []
+dict_usuarios= []
 app = FastAPI(title="motsi",
     description="Api Rest del mvp de Motsi",
     version="0.5")
@@ -19,8 +20,8 @@ class User(BaseModel):
     password: str
     email: Text
     cell_number: int
-    sex: bool
-    created_at: datetime = datetime.now()
+    sex: str
+    created_at: Optional[str]=datetime.now()
     # profile_pic: { "id": , "url":  }
     # date_of_birth: 
     # content: Text
@@ -106,10 +107,14 @@ async def update_activity_data():
 @app.post("/api/user_t")
 #'''Esta es la ruta para crear usuarios de turista'''
 async def create_turist(usuario: User):
-    usuario.id = str(uniqueID())
-    lista_usuarios.append(usuario.dict())
-    return(lista_usuarios)
-
+    try:
+        usuario.id = str(uniqueID())
+        usuario.created_at = str(datetime.now())
+        dict_usuarios = (usuario.dict())
+        result = insert(dict_usuarios, 'usuarios')
+        return(result)
+    except Exception as e:
+        print('-'*40,'\n','ha ocurrido un error:', '\n', e)
 @app.get("/api/user_t")
 #'''Esta es la ruta para consultar la lista de usuarios'''
 async def get_turist_data():

@@ -24,10 +24,14 @@ def database():
     return data
 
 #FUNCTION: Se utiliza para insertar los datos del usuario en el CHILD 2 que es el de los USUARIOS
-def insert(nombre,apellido,correo,contrasena,usuario):
-    db = firebase.database()
-    data= {"FIELD1":"2","nombre":nombre,"apellido":apellido,"usuario":usuario,"email":correo,"contraseña":contrasena}
-    datas = db.child("2").set(data)
+def insert(data, collection):
+    try:
+      db = firebase.database()
+      db.child(collection).set(data)
+      return('Datos almacenados')
+    except Exception as e:
+      print('-'*40,'\n','ha ocurrido un error:', '\n', e)
+      return('Error', e)
 
 def user_identi(var):
     db = firebase.database()
