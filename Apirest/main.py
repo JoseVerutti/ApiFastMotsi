@@ -11,10 +11,12 @@ dict_usuarios= []
 app = FastAPI(title="motsi",
     description="Api Rest del mvp de Motsi",
     version="0.5")
+
+
 #-----------------------------Schemas------------------------------------------------------
 
-class User(BaseModel):
-    id: Optional[str]=None
+class Service_provider(BaseModel):
+    id: Optional[str]
     name: str
     username: str
     password: str
@@ -31,10 +33,32 @@ class User(BaseModel):
     # country_long: str
     # country_short: str
 
+class Turist(BaseModel):
+    id: Optional[str]=None
+    name: str
+    username: str
+    password: str
+    email: Text
+    cell_number: int
+    sex: bool
+    created_at: datetime = datetime.now()
+
+class Location(BaseModel):
+
+    Activity_id:Optional[str]=None
+    Country: str
+    city: str
+    postalcode: int
+    is_location_exact: bool
+    latitud:float
+    longitud:float
+    #altitud: Optional(float)=None
+
+
 
 class Activiti(BaseModel):
-    id: Optional[str]=None 
-    idPrestador: str
+    id: Optional[str]=None
+    provider_id: Optional[str]=None
     title: str
     content : str
     status: bool
@@ -46,6 +70,35 @@ class Activiti(BaseModel):
     # ratingCount: None
     contactNumber: int
     # amenities: None
+
+class Amenities(BaseModel):
+    Activity_id: Optional[str]=None
+    bebederos:bool
+    alimentadores:bool
+    capas:bool
+    botas:bool
+    binoculares:bool
+    cafetera:bool
+    tetera:bool
+    senderos:bool
+    casetas_de_avistamiento:bool
+    fichas_de_aves_del_sitio:bool
+    guia_de_avisturismo:bool
+
+class MediaFile_User(BaseModel):
+    user_id: Optional[str]=None
+    type: str
+
+class MediaFile_Activiti(BaseModel):
+    Activity_id: Optional[str]=None
+    type:str
+
+class reservations(BaseModel):
+    turist_id: Optional[str]=None
+    Activity_id:Optional[str]=None
+    state:str
+    start: datetime
+    end: datetime
 
 
 # --------------------------------------- ON EVENT ---------------------------------------
@@ -104,9 +157,9 @@ async def update_activity_data():
 #----------------RUTRAS: Usuarios-------------------------------------------------------
 
 
-@app.post("/api/user_t")
+@app.post("/api/user_t/")
 #'''Esta es la ruta para crear usuarios de turista'''
-async def create_turist(usuario: User):
+async def create_turist(usuario: Turist):
     try:
         usuario.id = str(uniqueID())
         usuario.created_at = str(datetime.now())
@@ -115,10 +168,17 @@ async def create_turist(usuario: User):
         return(result)
     except Exception as e:
         print('-'*40,'\n','ha ocurrido un error:', '\n', e)
+
 @app.get("/api/user_t")
 #'''Esta es la ruta para consultar la lista de usuarios'''
-async def get_turist_data():
-    return(lista_usuarios)
+async def get_turist_data(user_id):
+    #user= lista_usuarios.select().where(lista_usuarios.id== user_id).first()
+    user= dict_usuarios.select().where(dict_usuarios.id== user_id).first()
+
+    if user:
+        print(user)
+    else:
+        print("User not found")
 
 @app.get("/api/user_sp")
 #'''Esta es la ruta para consultar los datos de la vista de un service provider'''
