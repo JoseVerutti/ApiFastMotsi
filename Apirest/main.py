@@ -64,14 +64,18 @@ class Location(BaseModel):
 class Activity(BaseModel):
     '''  Esquema que gestiona las actividad o experiencia turistica   '''
     id: Optional[str]=None
-    provider_id: Optional[str]=None
     title: str
     description:str
-    content : str
-    status: bool
     price: float
-    isNegotiable: bool 
-    contactNumber: int
+
+    # provider_id: Optional[str]=None
+    # title: str
+    # description:str
+    # content : str
+    # status: bool
+    # price: float
+    # isNegotiable: bool 
+    # contactNumber: int
     # propertyType: 
     # condition: None
     # rating: None
@@ -144,22 +148,25 @@ async def user():
 #----------------RUTAS: Actividades-------------------------------------------------------
 
 
-@app.post("/api/activities")
-async def create_activity():
+@app.post("/api/activity")
+async def create_activity(activity: Activity):
     '''Ruta para crear una actividad'''
+    activity.id = 'activity1'
+    dict_activity = (activity.dict())
+    result = genericInsertBD(dict_activity, 'actividades')
     return("Actividad creada")
 
-@app.get("/api/activities")
+@app.get("/api/activity")
 async def get_activity_data():
     '''Ruta para mostrar las actividades'''
     return("Actividad obtenida")
 
-@app.delete("/api/activities")
+@app.delete("/api/activity")
 async def delete_activity_data():
     '''Ruta para eliminar una actividad'''
     return("Actividad eliminada")
 
-@app.put("/api/activities")
+@app.put("/api/activity")
 async def update_activity_data():
     '''Ruta para editar una actividad'''
     return("Actividad editada exitosamente")
