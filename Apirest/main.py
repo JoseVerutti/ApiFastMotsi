@@ -1,10 +1,13 @@
+import json
 from fastapi import FastAPI
 from pydantic import BaseModel
 from typing import Text, Optional
 from datetime import date, datetime
-import json
 from database import *
 from uuid import uuid4 as uniqueID
+from fastapi.middleware.cors import CORSMiddleware
+
+
 
 # --------------------------------------- VARIABLES ---------------------------------------
 dict_usuarios= []
@@ -12,6 +15,22 @@ app = FastAPI(title="motsi",
     description="Api Rest del primer mvp de Motsi",
     version="0.5")
 
+# --------------------------------------- CORS ---------------------------------------
+# origins = [
+#     "http://localhost",
+#     "http://localhost:8000",
+#     "http://localhost:4040",
+#     "http://localhost:4040",
+#     'https://74ad2cf0f666.ngrok.io',
+# ]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 #-----------------------------Schemas------------------------------------------------------
 
@@ -63,11 +82,10 @@ class Location(BaseModel):
 
 class Activity(BaseModel):
     '''  Esquema que gestiona las actividad o experiencia turistica   '''
-    id: Optional[str]=None
+    #id: Optional[str]=None
     title: str
     description:str
     price: float
-
     # provider_id: Optional[str]=None
     # title: str
     # description:str
@@ -151,9 +169,13 @@ async def user():
 @app.post("/api/activity")
 async def create_activity(activity: Activity):
     '''Ruta para crear una actividad'''
-    activity.id = 'activity1'
-    dict_activity = (activity.dict())
-    result = genericInsertBD(dict_activity, 'actividades')
+    try:
+        print('hola, entraste al api activity')
+        #activity.id = 'activity1'
+        dict_activity = (activity.dict())
+        result = genericInsertBD(dict_activity, 'actividades')
+    except Exception as e:
+        print('-'*40,'\n','ha ocurrido un error:', '\n', e)
     return("Actividad creada")
 
 @app.get("/api/activity")
