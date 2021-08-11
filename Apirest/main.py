@@ -15,18 +15,18 @@ app = FastAPI(title="motsi",
     description="Api Rest del primer mvp de Motsi",
     version="0.5")
 
-# --------------------------------------- CORS ---------------------------------------
-# origins = [
-#     "http://localhost",
-#     "http://localhost:8000",
-#     "http://localhost:4040",
-#     "http://localhost:4040",
-#     'https://74ad2cf0f666.ngrok.io',
-# ]
+#--------------------------------------- CORS ---------------------------------------
+origins = [
+    "http://localhost",
+    "*",
+    "http://localhost:8000",
+    "http://localhost:4040",
+    "http://localhost:4040",
+]
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=origins,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -82,7 +82,7 @@ class Location(BaseModel):
 
 class Activity(BaseModel):
     '''  Esquema que gestiona las actividad o experiencia turistica   '''
-    #id: Optional[str]=None
+    id: Optional[str]=None
     title: str
     description:str
     price: float
@@ -171,12 +171,12 @@ async def create_activity(activity: Activity):
     '''Ruta para crear una actividad'''
     try:
         print('hola, entraste al api activity')
-        #activity.id = 'activity1'
+        activity.id = 'activity1'
         dict_activity = (activity.dict())
         result = genericInsertBD(dict_activity, 'actividades')
     except Exception as e:
         print('-'*40,'\n','ha ocurrido un error:', '\n', e)
-    return("Actividad creada")
+    return(json.dumps({"body":"Actividad creada"}))
 
 @app.get("/api/activity")
 async def get_activity_data():
