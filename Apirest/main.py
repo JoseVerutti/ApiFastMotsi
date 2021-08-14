@@ -1,12 +1,11 @@
 import json
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 from typing import Text, Optional
 from datetime import date, datetime
-from database import *
 from uuid import uuid4 as uniqueID
 from fastapi.middleware.cors import CORSMiddleware
-
+from database import *
 
 
 # --------------------------------------- VARIABLES ---------------------------------------
@@ -17,11 +16,8 @@ app = FastAPI(title="motsi",
 
 #--------------------------------------- CORS ---------------------------------------
 origins = [
-    "http://localhost",
-    "*",
+    "http://localhost:4000",
     "http://localhost:8000",
-    "http://localhost:4040",
-    "http://localhost:4040",
 ]
 
 app.add_middleware(
@@ -29,7 +25,7 @@ app.add_middleware(
     allow_origins=origins,
     allow_credentials=True,
     allow_methods=["*"],
-    allow_headers=["*"],
+    allow_headers=["*"]
 )
 
 #-----------------------------Schemas------------------------------------------------------
@@ -85,7 +81,7 @@ class Activity(BaseModel):
     id: Optional[str]=None
     title: str
     description:str
-    price: float
+    price: int
     # provider_id: Optional[str]=None
     # title: str
     # description:str
@@ -136,60 +132,67 @@ class reservations(BaseModel):
 
 # --------------------------------------- ON EVENT ---------------------------------------
 
-@app.on_event('startup')
-def startup():
-    #if conecction.is_closed:
-    #    conecction.conecct()
-    pass
+# @app.on_event('startup')
+# def startup():
+#     #if conecction.is_closed:
+#     #    conecction.conect()
+#     pass
 
-# pip install virtualenv
-# virtualenv env
-# cd env/scripts
-# activate
-# pip install gunicorn pyrebase4 requests flask pandas
-# pip install yagmail Flask-WTF Werkzeug Flask-Login smtplib functools
-
-
-@app.on_event('startup')
-def shutdown():
-    pass
+# @app.on_event('startup')
+# def shutdown():
+#     pass
 
 # --------------------------------------- RUTAS ---------------------------------------
-@app.get('/')
-async def index():
-    return("Hola Motsi")
+# @app.get('/')
+# async def index():
+#     return("Hola Motsi")
 
-@app.get("/user")
-async def user():
-    return("user")
+# @app.get("/user")
+# async def user():
+#     return("user")
 
 #----------------RUTAS: Actividades-------------------------------------------------------
 
 
 @app.post("/api/activity")
-async def create_activity(activity: Activity):
+#async def create_activity(activity: Activity):
+async def create_activity():
     '''Ruta para crear una actividad'''
     try:
         print('hola, entraste al api activity')
-        activity.id = 'activity1'
+        activity.id = 'activity2'
         dict_activity = (activity.dict())
-        result = genericInsertBD(dict_activity, 'actividades')
+        result = await genericInsertBD(dict_activity, 'actividades')
     except Exception as e:
         print('-'*40,'\n','ha ocurrido un error:', '\n', e)
-    return(json.dumps({"body":"Actividad creada"}))
+    return({"status": 200, "body":"Actividad creada"})
+
 
 @app.get("/api/activity")
-async def get_activity_data():
+async def get_activity_data_generic():
+    '''Ruta para mostrar las actividades'''
+
+
+
+    return("Actividad obtenida")
+
+@app.get("/api/activity{id}")
+async def get_activity_data(id):
+    '''Ruta para mostrar las actividades por id'''
+    return("Actividad obtenida")
+
+@app.post("/api/activity")
+async def post_activity_data(activity):
     '''Ruta para mostrar las actividades'''
     return("Actividad obtenida")
 
-@app.delete("/api/activity")
-async def delete_activity_data():
+@app.delete("/api/activity{id}")
+async def delete_activity_data(id):
     '''Ruta para eliminar una actividad'''
     return("Actividad eliminada")
 
-@app.put("/api/activity")
-async def update_activity_data():
+@app.put("/api/activity{id}")
+async def update_activity_data(id, data):
     '''Ruta para editar una actividad'''
     return("Actividad editada exitosamente")
 
@@ -198,103 +201,101 @@ async def update_activity_data():
 #----------------GIANPIER -------------------------------------------------------
 
 
-@app.post("/api/user_POST/")
-async def create_turist(usuario: Turist):
-    '''Esta es la ruta para crear usuarios de turista'''
-    try:
-        usuario.id = str(uniqueID())
-        usuario.created_at = str(datetime.now())
-        dict_usuarios = (usuario.dict())
-        result = insertBD(dict_usuarios, 'usuarios')
-        return(result)
-    except Exception as e:
-        print('-'*40,'\n','ha ocurrido un error:', '\n', e)
+# @app.post("/api/user_POST/")
+# async def create_turist(usuario: Turist):
+#     '''Esta es la ruta para crear usuarios de turista'''
+#     try:
+#         usuario.id = str(uniqueID())
+#         usuario.created_at = str(datetime.now())
+#         dict_usuarios = (usuario.dict())
+#         result = insertBD(dict_usuarios, 'usuarios')
+#         return(result)
+#     except Exception as e:
+#         print('-'*40,'\n','ha ocurrido un error:', '\n', e)
 
-class userGet(BaseModel):
-    userName:str
+# class userGet(BaseModel):
+#     userName:str
 
+# @app.get("/api/user_GET/")
+# async def create_turist(usuario: userGet):
+#     '''Esta es la ruta para obtener usuarios'''
+#     try:
+#         print('hizo get')
+#         response = obtenerBD("usuarios", usuario.userName)
+#         return(response)
 
-@app.get("/api/user_GET/")
-async def create_turist(usuario: userGet):
-    '''Esta es la ruta para obtener usuarios'''
-    try:
-        print('hizo get')
-        response = obtenerBD("usuarios", usuario.userName)
-        return(response)
-
-    except Exception as e:
-        print('-'*40,'\n','ha ocurrido un error:', '\n', e)
-
-
-#----------------RUTAS: Usuarios turista-------------------------------------------------------
-
-@app.get("/api/user_t/{user_id}")
-async def get_turist_data(user_id):
-    '''Esta es la ruta para consultar la lista de usuarios'''
-    user= dict_usuarios.select().where(dict_usuarios.id== user_id).first()
-    if user:
-        print(user)
-    else:
-        print("User not found")
-
-@app.delete("/api/user_t/{user_id}")
-
-async def delete_turist_data(user_id):
-    '''Esta es la ruta para Eliminar un usuario'''
-    try:
-        pass
-    except Exception as e:
-        print('-'*40,'\n','ha ocurrido un error:', '\n', e)
-
-@app.put("/api/user_t/{user_id}")
-
-async def update_turist_data(user_id):
-    '''Esta es la ruta para actualizar la lista de usuarios'''
-    try:
-        pass
-    except Exception as e:
-        print('-'*40,'\n','ha ocurrido un error:', '\n', e)
+#     except Exception as e:
+#         print('-'*40,'\n','ha ocurrido un error:', '\n', e)
 
 
-#----------------RUTAS: Usuarios prestador de servicios-------------------------------------------------------
+# #----------------RUTAS: Usuarios turista-------------------------------------------------------
+
+# @app.get("/api/user_t/{user_id}")
+# async def get_turist_data(user_id):
+#     '''Esta es la ruta para consultar la lista de usuarios'''
+#     user= dict_usuarios.select().where(dict_usuarios.id== user_id).first()
+#     if user:
+#         print(user)
+#     else:
+#         print("User not found")
+
+# @app.delete("/api/user_t/{user_id}")
+
+# async def delete_turist_data(user_id):
+#     '''Esta es la ruta para Eliminar un usuario'''
+#     try:
+#         pass
+#     except Exception as e:
+#         print('-'*40,'\n','ha ocurrido un error:', '\n', e)
+
+# @app.put("/api/user_t/{user_id}")
+
+# async def update_turist_data(user_id):
+#     '''Esta es la ruta para actualizar la lista de usuarios'''
+#     try:
+#         pass
+#     except Exception as e:
+#         print('-'*40,'\n','ha ocurrido un error:', '\n', e)
 
 
-@app.post("/api/user_sp/")
+# #----------------RUTAS: Usuarios prestador de servicios-------------------------------------------------------
 
-async def create_Service_provider(usuario: Service_provider):
-    '''Esta es la ruta para crear usuarios de Service_provider'''
-    try:
-        usuario.id = str(uniqueID())
-        usuario.created_at = str(datetime.now())
-        dict_usuarios = (usuario.dict())
-        result = insert(dict_usuarios, 'usuarios')
-        return(result)
-    except Exception as e:
-        print('-'*40,'\n','ha ocurrido un error:', '\n', e)
 
-@app.get("/api/user_sp/{user_id}")
+# @app.post("/api/user_sp/")
+# async def create_Service_provider(usuario: Service_provider):
+#     '''Esta es la ruta para crear usuarios de Service_provider'''
+#     try:
+#         usuario.id = str(uniqueID())
+#         usuario.created_at = str(datetime.now())
+#         dict_usuarios = (usuario.dict())
+#         result = insert(dict_usuarios, 'usuarios')
+#         return(result)
+#     except Exception as e:
+#         print('-'*40,'\n','ha ocurrido un error:', '\n', e)
 
-async def get_Service_provider_data(user_id):
-    '''Esta es la ruta para consultar la lista de Service_provider'''
-    user= dict_usuarios.select().where(dict_usuarios.id== user_id).first()
-    if user:
-        print(user)
-    else:
-        print("User not found")
+# @app.get("/api/user_sp/{user_id}")
 
-@app.delete("/api/user_sp/{user_id}")
-async def delete_Service_provider_data(user_id):
-    '''Esta es la ruta para eliminar de la lista un Service_provider'''
-    try:
-        pass
-    except Exception as e:
-        print('-'*40,'\n','ha ocurrido un error:', '\n', e)
+# async def get_Service_provider_data(user_id):
+#     '''Esta es la ruta para consultar la lista de Service_provider'''
+#     user= dict_usuarios.select().where(dict_usuarios.id== user_id).first()
+#     if user:
+#         print(user)
+#     else:
+#         print("User not found")
 
-@app.put("/api/user_sp/{user_id}")
-async def update_Service_provider_data(user_id):
-    '''Esta es la ruta para actualizar los datos de Service_provider'''
-    try:
-        pass
-    except Exception as e:
-        print('-'*40,'\n','ha ocurrido un error:', '\n', e)
+# @app.delete("/api/user_sp/{user_id}")
+# async def delete_Service_provider_data(user_id):
+#     '''Esta es la ruta para eliminar de la lista un Service_provider'''
+#     try:
+#         pass
+#     except Exception as e:
+#         print('-'*40,'\n','ha ocurrido un error:', '\n', e)
+
+# @app.put("/api/user_sp/{user_id}")
+# async def update_Service_provider_data(user_id):
+#     '''Esta es la ruta para actualizar los datos de Service_provider'''
+#     try:
+#         pass
+#     except Exception as e:
+#         print('-'*40,'\n','ha ocurrido un error:', '\n', e)
 

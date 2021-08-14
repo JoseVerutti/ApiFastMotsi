@@ -1,5 +1,10 @@
 import pyrebase, requests, json
 import pandas as pd
+from model import Activity
+
+client
+
+
 
 # --------------------------------CREDENCIALES APP--------------------------------
 
